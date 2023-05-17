@@ -4,7 +4,7 @@ let attempt = 0;
 const maxAttempt = 15;
 let watchDeployment = null;
 const twosecondsCronExpression = '*/2 * * * * *';
-const successfulStatuses = ["Ready","Deployed"];
+const acceptedStates = ["Ready","Deployed"];
 const availableStatues = ["Ready","Failed","Started","Ready"];
 
 function startPeriodicJob(deploymentStatus,deploymentName,nameSpace,matchers) {
@@ -49,4 +49,4 @@ function checkDeploymentStatus(deploymentName,nameSpace){
 }
 
 // TODO Call this when Deployment started SSE is receieved
-startPeriodicJob(checkDeploymentStatus,"D001","NS",successfulStatuses);
+startPeriodicJob(checkDeploymentStatus,"D001","NS",acceptedStates);
